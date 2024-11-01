@@ -3,6 +3,9 @@
 import type { CartItem } from "../types/cart.type";
 
 export function getLocalCart(): CartItem[] {
+  if (typeof localStorage === "undefined") {
+    return [];
+  }
   const localCartString = localStorage.getItem("cart") ?? "[]";
   const localCart: CartItem[] = JSON.parse(localCartString);
   return localCart;

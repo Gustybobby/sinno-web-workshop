@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function CartPage() {
-  const { cartItems, refreshCart } = useCart();
+  const { cartItems } = useCart();
 
   if (!cartItems) {
     return <></>;
@@ -51,7 +51,6 @@ export default function CartPage() {
                       className="text-sm text-gray-500 hover:underline"
                       onClick={() => {
                         removeItemFromLocalCart(idx);
-                        refreshCart();
                         window.dispatchEvent(new Event("update_cart"));
                       }}
                     >

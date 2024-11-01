@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
 import { FaRegUserCircle } from "react-icons/fa";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import useCart from "@/hooks/useCart";
@@ -10,13 +9,7 @@ import Link from "next/link";
 
 export default function Header() {
   const pathname = usePathname();
-  const { cartItems, refreshCart } = useCart();
-
-  useEffect(() => {
-    window.addEventListener("update_cart", () => {
-      refreshCart();
-    });
-  }, [refreshCart]);
+  const { cartItems } = useCart();
 
   return (
     <header className="bg-gray-200 h-16 sticky top-0 backdrop-blur-sm bg-opacity-60 grid grid-cols-7">
